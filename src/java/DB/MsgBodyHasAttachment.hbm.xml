@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.MsgBodyHasAttachment" table="msg_body_has_attachment" catalog="projectssale">
+        <id name="idMsgBodyHasAttachment" type="java.lang.Integer">
+            <column name="idMsg_body_has_attachment" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="messageBody" class="DB.MessageBody" fetch="select">
+            <column name="Message_body_idMessage_body" not-null="true" />
+        </many-to-one>
+        <property name="time" type="string">
+            <column name="time" length="45" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="10000" />
+        </property>
+    </class>
+</hibernate-mapping>

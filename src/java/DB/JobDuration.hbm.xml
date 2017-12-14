@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.JobDuration" table="job_duration" catalog="projectssale">
+        <id name="idjobDuration" type="java.lang.Integer">
+            <column name="idjob_duration" />
+            <generator class="identity" />
+        </id>
+        <property name="time" type="string">
+            <column name="time" length="45" />
+        </property>
+        <set name="addJobs" inverse="true">
+            <key>
+                <column name="job_duration_idjob_duration" not-null="true" />
+            </key>
+            <one-to-many class="DB.AddJob" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/projectssale?zeroDateTimeBehavior=convertToNull</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">bhagya</property>
+        
+        <property name= " hibernate.c3p0.min_size">5</property>
+        <property name= "hibernate.c3p0.max_size">20</property>
+        <property name= "  hibernate.c3p0.timeout">1800</property>
+        <property name= " hibernate.c3p0.max_statements">50</property> 
+        
+        <mapping resource="DB/UploadFile.hbm.xml"/>
+        <mapping resource="DB/UserLogin.hbm.xml"/>
+        <mapping resource="DB/VacationDuration.hbm.xml"/>
+        <mapping resource="DB/UploadPic.hbm.xml"/>
+        <mapping resource="DB/Cart.hbm.xml"/>
+        <mapping resource="DB/JobDuration.hbm.xml"/>
+        <mapping resource="DB/MsgBodyHasAttachment.hbm.xml"/>
+        <mapping resource="DB/JobPriceList.hbm.xml"/>
+        <mapping resource="DB/Payment.hbm.xml"/>
+        <mapping resource="DB/View.hbm.xml"/>
+        <mapping resource="DB/UploadDemo.hbm.xml"/>
+        <mapping resource="DB/JobFeedback.hbm.xml"/>
+        <mapping resource="DB/Projects.hbm.xml"/>
+        <mapping resource="DB/Database1.hbm.xml"/>
+        <mapping resource="DB/OrderDetails.hbm.xml"/>
+        <mapping resource="DB/Vacation.hbm.xml"/>
+        <mapping resource="DB/ViewType.hbm.xml"/>
+        <mapping resource="DB/UserType.hbm.xml"/>
+        <mapping resource="DB/JobDisplayPhoto.hbm.xml"/>
+        <mapping resource="DB/UserLoginDetails.hbm.xml"/>
+        <mapping resource="DB/UserTypeHasUserPage.hbm.xml"/>
+        <mapping resource="DB/User.hbm.xml"/>
+        <mapping resource="DB/SubCategory.hbm.xml"/>
+        <mapping resource="DB/CartHasProject.hbm.xml"/>
+        <mapping resource="DB/PaymentHasProjects.hbm.xml"/>
+        <mapping resource="DB/Order.hbm.xml"/>
+        <mapping resource="DB/UserPage.hbm.xml"/>
+        <mapping resource="DB/Message.hbm.xml"/>
+        <mapping resource="DB/CategoryType.hbm.xml"/>
+        <mapping resource="DB/ProHasView.hbm.xml"/>
+        <mapping resource="DB/MessageBody.hbm.xml"/>
+        <mapping resource="DB/JobCategory.hbm.xml"/>
+        <mapping resource="DB/AddJob.hbm.xml"/>
+        <mapping resource="DB/Category.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.UserLoginDetails" table="user_login_details" catalog="projectssale">
+        <id name="iduserLoginDetails" type="java.lang.Integer">
+            <column name="iduser_login_details" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userLogin" class="DB.UserLogin" fetch="select">
+            <column name="user_login_iduser_login" not-null="true" />
+        </many-to-one>
+        <property name="ipaddress" type="string">
+            <column name="ipaddress" length="45" />
+        </property>
+        <property name="intime" type="string">
+            <column name="intime" length="45" />
+        </property>
+        <property name="outtime" type="string">
+            <column name="outtime" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="10000" />
+        </property>
+        <property name="macAddress" type="string">
+            <column name="Mac_Address" length="45" />
+        </property>
+        <property name="browserDetails" type="string">
+            <column name="Browser_details" length="4000" />
+        </property>
+        <property name="operationSystem" type="string">
+            <column name="Operation_System" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

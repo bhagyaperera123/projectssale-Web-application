@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.Vacation" table="vacation" catalog="projectssale">
+        <id name="idvacation" type="java.lang.Integer">
+            <column name="idvacation" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vacationDuration" class="DB.VacationDuration" fetch="select">
+            <column name="vacation_duration_idvacation_duration" not-null="true" />
+        </many-to-one>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+    </class>
+</hibernate-mapping>

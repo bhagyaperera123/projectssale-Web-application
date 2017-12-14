@@ -1,0 +1,1363 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.1.52-community
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema projectssale
+--
+
+CREATE DATABASE IF NOT EXISTS projectssale;
+USE projectssale;
+
+--
+-- Definition of table `add_job`
+--
+
+DROP TABLE IF EXISTS `add_job`;
+CREATE TABLE `add_job` (
+  `idadd_job` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `job_Category` int(11) NOT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `tags` varchar(10000) DEFAULT NULL,
+  `job_duration_idjob_duration` int(11) NOT NULL,
+  `instructions_for_buyer` varchar(10000) DEFAULT NULL,
+  `user_iduser` int(11) NOT NULL,
+  `job_display_photo_id_job_display_photo` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `job_price_List_idjob_price_List` int(11) NOT NULL,
+  PRIMARY KEY (`idadd_job`),
+  KEY `fk_add_job_job_Category1` (`job_Category`),
+  KEY `fk_add_job_job_duration1` (`job_duration_idjob_duration`),
+  KEY `fk_add_job_user1` (`user_iduser`),
+  KEY `fk_add_job_job_display_photo1` (`job_display_photo_id_job_display_photo`),
+  KEY `fk_add_job_job_price_List1` (`job_price_List_idjob_price_List`),
+  CONSTRAINT `fk_add_job_job_Category1` FOREIGN KEY (`job_Category`) REFERENCES `job_category` (`idjob_type`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_add_job_job_display_photo1` FOREIGN KEY (`job_display_photo_id_job_display_photo`) REFERENCES `job_display_photo` (`id_job_display_photo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_add_job_job_duration1` FOREIGN KEY (`job_duration_idjob_duration`) REFERENCES `job_duration` (`idjob_duration`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_add_job_job_price_List1` FOREIGN KEY (`job_price_List_idjob_price_List`) REFERENCES `job_price_list` (`idjob_price_List`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_add_job_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `add_job`
+--
+
+/*!40000 ALTER TABLE `add_job` DISABLE KEYS */;
+INSERT INTO `add_job` (`idadd_job`,`title`,`job_Category`,`description`,`tags`,`job_duration_idjob_duration`,`instructions_for_buyer`,`user_iduser`,`job_display_photo_id_job_display_photo`,`status`,`job_price_List_idjob_price_List`) VALUES 
+ (2,'I can create a Software',1,'no description','Java,Css,Ajax,Xml,Html,',1,'jasnkdajsnkdndjks\r\n                                    ',3,2,0,1),
+ (3,'I can create a Web Application',1,'On the Insert tab, the galleries include items that are designed to coordinate with the overall look of your document. You can use these galleries to insert tables, headers, footers, lists, cover pages, and other document building blocks. When you create pictures, charts, or diagrams, they also coordinate with your current document look.\r\nYou can easily change the formatting of selected text in the document text by choosing a look for the selected text from the Quick Styles gallery on the Home tab. You can also format text directly by using the other controls on the Home tab. Most controls offer a choice of using the look from the current theme or using a format that you specify directly.\r\n','Java,Css,Ajax,Xml,Html,',1,'On the Insert tab, the galleries include items that are designed to coordinate with the overall look of your document. You can use these galleries to insert tables, headers, footers, lists, cover pages, and other document building blocks. When you create pictures, charts, or diagrams, they also coordinate with your current document look.\r\nYou can easily change the formatting of selected text in the document text by choosing a look for the selected text from the Quick Styles gallery on the Home tab. You can also format text directly by using the other controls on the Home tab. Most controls offer a choice of using the look from the current theme or using a format that you specify directly.\r\n',4,3,1,1),
+ (4,'i can create a php web application',1,'abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef','Java,Php,Xml,Html,Css,Ajax,Js,Jq,',1,'abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef',4,4,1,3),
+ (5,'hellooo',1,'Dear Sir / Madam,\r\nThank to order my gig.\r\nplease send your example (logos, Vectors, photos) and tell me what you want in output.\r\ncome back bring your logo.\r\nThanks again.\r\n\r\nDeveloper.','Java,Css,Ajax,Xml,Html,JS,',3,'Dear Sir / Madam,\r\nThank to order my gig.\r\nplease send your example (logos, Vectors, photos) and tell me what you want in output.\r\ncome back bring your logo.\r\nThanks again.\r\n\r\nDeveloper.',4,5,1,3);
+/*!40000 ALTER TABLE `add_job` ENABLE KEYS */;
+
+
+--
+-- Definition of table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE `cart` (
+  `idcart` int(11) NOT NULL AUTO_INCREMENT,
+  `user_iduser` int(11) NOT NULL,
+  `product_count` int(11) DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `date_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`idcart`),
+  KEY `fk_cart_user1` (`user_iduser`),
+  CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` (`idcart`,`user_iduser`,`product_count`,`total_amount`,`date_time`) VALUES 
+ (1,4,1,300,'2016-01-27 15:31:25'),
+ (2,3,1,12000,'2016-01-27 12:21:56'),
+ (3,7,0,0,NULL),
+ (4,10,2,4700,'2016-01-15 21:11:26'),
+ (5,15,0,0,NULL),
+ (6,17,1,300,'2016-01-29 09:48:27');
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+
+
+--
+-- Definition of table `cart_has_project`
+--
+
+DROP TABLE IF EXISTS `cart_has_project`;
+CREATE TABLE `cart_has_project` (
+  `idcart_has_project` int(11) NOT NULL AUTO_INCREMENT,
+  `projects_idprojects` int(11) NOT NULL,
+  `cart_idcart` int(11) NOT NULL,
+  `qty` double DEFAULT NULL,
+  `is_purchase` int(11) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  PRIMARY KEY (`idcart_has_project`),
+  KEY `fk_cart_has_project_projects1` (`projects_idprojects`),
+  KEY `fk_cart_has_project_cart1` (`cart_idcart`),
+  CONSTRAINT `fk_cart_has_project_cart1` FOREIGN KEY (`cart_idcart`) REFERENCES `cart` (`idcart`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cart_has_project_projects1` FOREIGN KEY (`projects_idprojects`) REFERENCES `projects` (`idprojects`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart_has_project`
+--
+
+/*!40000 ALTER TABLE `cart_has_project` DISABLE KEYS */;
+INSERT INTO `cart_has_project` (`idcart_has_project`,`projects_idprojects`,`cart_idcart`,`qty`,`is_purchase`,`price`) VALUES 
+ (1,2,1,1,1,3200),
+ (2,1,1,1,1,12000),
+ (3,3,2,1,1,4600),
+ (4,4,2,1,1,33000),
+ (5,1,3,1,1,12000),
+ (6,2,3,1,1,3200),
+ (7,3,3,1,1,4600),
+ (8,4,3,1,1,33000),
+ (10,5,3,1,1,8000),
+ (11,6,2,1,1,300),
+ (12,1,4,1,1,12000),
+ (13,2,4,1,1,3200),
+ (14,7,2,1,1,100),
+ (15,5,2,1,1,8000),
+ (19,7,4,1,0,100),
+ (23,3,4,1,0,4600),
+ (24,1,2,1,0,12000),
+ (29,1,5,1,1,12000),
+ (30,2,5,1,1,3200),
+ (31,4,5,1,1,33000),
+ (32,6,5,1,1,300),
+ (33,7,5,1,1,100),
+ (34,5,5,1,1,8000),
+ (39,1,6,1,1,12000),
+ (40,5,6,1,1,8000),
+ (41,7,1,1,1,100),
+ (42,6,1,1,0,300),
+ (43,6,6,1,0,300);
+/*!40000 ALTER TABLE `cart_has_project` ENABLE KEYS */;
+
+
+--
+-- Definition of table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
+  `idCategory` int(11) NOT NULL AUTO_INCREMENT,
+  `idSub_Category` int(11) NOT NULL,
+  `idCategory_type` int(11) NOT NULL,
+  PRIMARY KEY (`idCategory`),
+  KEY `fk_Category_Sub_Category1` (`idSub_Category`),
+  KEY `fk_Category_Category_type1` (`idCategory_type`),
+  CONSTRAINT `fk_Category_Category_type1` FOREIGN KEY (`idCategory_type`) REFERENCES `category_type` (`idCategory_type`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Category_Sub_Category1` FOREIGN KEY (`idSub_Category`) REFERENCES `sub_category` (`idSub_Category`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` (`idCategory`,`idSub_Category`,`idCategory_type`) VALUES 
+ (1,1,1),
+ (2,2,1),
+ (3,3,1),
+ (4,7,2),
+ (5,8,2),
+ (6,9,2),
+ (7,10,2),
+ (8,11,2),
+ (9,12,2),
+ (10,13,2),
+ (11,4,3),
+ (12,5,3),
+ (13,6,3);
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+
+
+--
+-- Definition of table `category_type`
+--
+
+DROP TABLE IF EXISTS `category_type`;
+CREATE TABLE `category_type` (
+  `idCategory_type` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idCategory_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category_type`
+--
+
+/*!40000 ALTER TABLE `category_type` DISABLE KEYS */;
+INSERT INTO `category_type` (`idCategory_type`,`Name`,`status`) VALUES 
+ (1,'Swing',1),
+ (2,'Web',1),
+ (3,'Mobile',1);
+/*!40000 ALTER TABLE `category_type` ENABLE KEYS */;
+
+
+--
+-- Definition of table `database1`
+--
+
+DROP TABLE IF EXISTS `database1`;
+CREATE TABLE `database1` (
+  `idDatabase` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idDatabase`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `database1`
+--
+
+/*!40000 ALTER TABLE `database1` DISABLE KEYS */;
+INSERT INTO `database1` (`idDatabase`,`Name`,`status`) VALUES 
+ (1,'SQL',1),
+ (2,'Oracle',1);
+/*!40000 ALTER TABLE `database1` ENABLE KEYS */;
+
+
+--
+-- Definition of table `job_category`
+--
+
+DROP TABLE IF EXISTS `job_category`;
+CREATE TABLE `job_category` (
+  `idjob_type` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idjob_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_category`
+--
+
+/*!40000 ALTER TABLE `job_category` DISABLE KEYS */;
+INSERT INTO `job_category` (`idjob_type`,`category_name`,`status`) VALUES 
+ (1,'Programming',1),
+ (2,'SEO',1);
+/*!40000 ALTER TABLE `job_category` ENABLE KEYS */;
+
+
+--
+-- Definition of table `job_display_photo`
+--
+
+DROP TABLE IF EXISTS `job_display_photo`;
+CREATE TABLE `job_display_photo` (
+  `id_job_display_photo` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`id_job_display_photo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_display_photo`
+--
+
+/*!40000 ALTER TABLE `job_display_photo` DISABLE KEYS */;
+INSERT INTO `job_display_photo` (`id_job_display_photo`,`path`) VALUES 
+ (2,'upload\\Users\\abc_abc@gmail.com\\jobs\\I can create a Software\\1.jpg'),
+ (3,'upload\\Users\\ishan_ishan@gmail.com\\jobs\\I can create a Web Application\\5.jpg'),
+ (4,'upload\\Users\\ishan_ishan@gmail.com\\jobs\\i can create a php web application\\6.jpg'),
+ (5,'upload\\Users\\ishan_ishan@gmail.com\\jobs\\hellooo\\7.jpg');
+/*!40000 ALTER TABLE `job_display_photo` ENABLE KEYS */;
+
+
+--
+-- Definition of table `job_duration`
+--
+
+DROP TABLE IF EXISTS `job_duration`;
+CREATE TABLE `job_duration` (
+  `idjob_duration` int(11) NOT NULL AUTO_INCREMENT,
+  `time` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idjob_duration`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_duration`
+--
+
+/*!40000 ALTER TABLE `job_duration` DISABLE KEYS */;
+INSERT INTO `job_duration` (`idjob_duration`,`time`) VALUES 
+ (1,'1 Day'),
+ (2,'2 Days'),
+ (3,'3 Days'),
+ (4,'4 Days'),
+ (5,'5 Days');
+/*!40000 ALTER TABLE `job_duration` ENABLE KEYS */;
+
+
+--
+-- Definition of table `job_feedback`
+--
+
+DROP TABLE IF EXISTS `job_feedback`;
+CREATE TABLE `job_feedback` (
+  `id_job_feedback` int(11) NOT NULL AUTO_INCREMENT,
+  `add_job_idadd_job` int(11) NOT NULL,
+  `user_iduser` int(11) NOT NULL,
+  `feedback_title` varchar(10000) DEFAULT NULL,
+  `feedback` varchar(10000) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL,
+  `date_time` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_job_feedback`),
+  KEY `fk_table1_add_job1` (`add_job_idadd_job`),
+  KEY `fk_job_feedback_user1` (`user_iduser`),
+  CONSTRAINT `fk_job_feedback_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_table1_add_job1` FOREIGN KEY (`add_job_idadd_job`) REFERENCES `add_job` (`idadd_job`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_feedback`
+--
+
+/*!40000 ALTER TABLE `job_feedback` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_feedback` ENABLE KEYS */;
+
+
+--
+-- Definition of table `job_price_list`
+--
+
+DROP TABLE IF EXISTS `job_price_list`;
+CREATE TABLE `job_price_list` (
+  `idjob_price_List` int(11) NOT NULL AUTO_INCREMENT,
+  `price` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idjob_price_List`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_price_list`
+--
+
+/*!40000 ALTER TABLE `job_price_list` DISABLE KEYS */;
+INSERT INTO `job_price_list` (`idjob_price_List`,`price`) VALUES 
+ (1,'$10.00'),
+ (2,'$20.00'),
+ (3,'$50.00');
+/*!40000 ALTER TABLE `job_price_list` ENABLE KEYS */;
+
+
+--
+-- Definition of table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `idMessage` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser_form` int(11) NOT NULL,
+  `iduser_to` int(11) NOT NULL,
+  PRIMARY KEY (`idMessage`),
+  KEY `fk_Message_user1` (`iduser_form`),
+  KEY `fk_Message_user2` (`iduser_to`),
+  CONSTRAINT `fk_Message_user1` FOREIGN KEY (`iduser_form`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Message_user2` FOREIGN KEY (`iduser_to`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message`
+--
+
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` (`idMessage`,`iduser_form`,`iduser_to`) VALUES 
+ (1,3,4),
+ (2,4,3),
+ (3,4,3),
+ (4,4,3),
+ (5,4,3),
+ (6,4,3);
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+
+
+--
+-- Definition of table `message_body`
+--
+
+DROP TABLE IF EXISTS `message_body`;
+CREATE TABLE `message_body` (
+  `idMessage_body` int(11) NOT NULL AUTO_INCREMENT,
+  `Message_idMessage` int(11) NOT NULL,
+  `time` varchar(45) DEFAULT NULL,
+  `message` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`idMessage_body`),
+  KEY `fk_Message_body_Message1` (`Message_idMessage`),
+  CONSTRAINT `fk_Message_body_Message1` FOREIGN KEY (`Message_idMessage`) REFERENCES `message` (`idMessage`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message_body`
+--
+
+/*!40000 ALTER TABLE `message_body` DISABLE KEYS */;
+INSERT INTO `message_body` (`idMessage_body`,`Message_idMessage`,`time`,`message`) VALUES 
+ (1,1,'Mon Mar 02 21:08:16 IST 2015','hi ishan'),
+ (2,2,'Mon Mar 02 21:42:57 IST 2015','ahh kk'),
+ (3,3,'Tue Mar 03 09:56:45 IST 2015','kk'),
+ (4,4,'Tue Mar 03 09:58:15 IST 2015','ela'),
+ (5,5,'Sun Nov 01 11:59:26 IST 2015','gytyghm'),
+ (6,6,'Sun Nov 01 11:59:38 IST 2015','tgf');
+/*!40000 ALTER TABLE `message_body` ENABLE KEYS */;
+
+
+--
+-- Definition of table `msg_body_has_attachment`
+--
+
+DROP TABLE IF EXISTS `msg_body_has_attachment`;
+CREATE TABLE `msg_body_has_attachment` (
+  `idMsg_body_has_attachment` int(11) NOT NULL AUTO_INCREMENT,
+  `Message_body_idMessage_body` int(11) NOT NULL,
+  `time` varchar(45) DEFAULT NULL,
+  `url` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`idMsg_body_has_attachment`),
+  KEY `fk_Msg_body_has_attachment_Message_body1` (`Message_body_idMessage_body`),
+  CONSTRAINT `fk_Msg_body_has_attachment_Message_body1` FOREIGN KEY (`Message_body_idMessage_body`) REFERENCES `message_body` (`idMessage_body`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `msg_body_has_attachment`
+--
+
+/*!40000 ALTER TABLE `msg_body_has_attachment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `msg_body_has_attachment` ENABLE KEYS */;
+
+
+--
+-- Definition of table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `idorder` int(11) NOT NULL AUTO_INCREMENT,
+  `send_order_user` int(11) NOT NULL,
+  `receiver_user` int(11) NOT NULL,
+  `add_job_idadd_job` int(11) NOT NULL,
+  `idorder_details` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idorder`),
+  KEY `fk_order_user1` (`send_order_user`),
+  KEY `fk_order_add_job1` (`add_job_idadd_job`),
+  KEY `fk_order_order_details1` (`idorder_details`),
+  KEY `fk_order_user2` (`receiver_user`),
+  CONSTRAINT `fk_order_add_job1` FOREIGN KEY (`add_job_idadd_job`) REFERENCES `add_job` (`idadd_job`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_order_details1` FOREIGN KEY (`idorder_details`) REFERENCES `order_details` (`idorder_details`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_user1` FOREIGN KEY (`send_order_user`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_user2` FOREIGN KEY (`receiver_user`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order`
+--
+
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` (`idorder`,`send_order_user`,`receiver_user`,`add_job_idadd_job`,`idorder_details`,`status`) VALUES 
+ (1,3,4,3,1,1),
+ (2,4,3,2,2,1),
+ (3,7,4,3,3,1);
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+
+
+--
+-- Definition of table `order_details`
+--
+
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE `order_details` (
+  `idorder_details` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(400) DEFAULT NULL,
+  `msg_body` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`idorder_details`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_details`
+--
+
+/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+INSERT INTO `order_details` (`idorder_details`,`title`,`msg_body`) VALUES 
+ (1,'ABCD ','kjskdbkcbskbdkbskbdckshdckjsdnm'),
+ (2,'aaaa','\r\n                                             sdfsdf               '),
+ (3,'title','hjdbscsjndjcnk');
+/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
+
+
+--
+-- Definition of table `payment`
+--
+
+DROP TABLE IF EXISTS `payment`;
+CREATE TABLE `payment` (
+  `idPayment` int(11) NOT NULL AUTO_INCREMENT,
+  `user_iduser` int(11) NOT NULL,
+  `project_count` int(11) DEFAULT NULL,
+  `Total_Amount` double DEFAULT NULL,
+  `Date_Time` varchar(45) DEFAULT NULL,
+  `email_Status` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`idPayment`),
+  KEY `fk_Payment_user1` (`user_iduser`),
+  CONSTRAINT `fk_Payment_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment`
+--
+
+/*!40000 ALTER TABLE `payment` DISABLE KEYS */;
+INSERT INTO `payment` (`idPayment`,`user_iduser`,`project_count`,`Total_Amount`,`Date_Time`,`email_Status`) VALUES 
+ (1,4,2,15200,'2015-03-02 10:20:30',0),
+ (2,3,2,37600,'2015-03-02 23:29:10',0),
+ (3,7,1,12000,'2015-03-03 08:09:29',1),
+ (4,7,3,40800,'2015-03-03 08:21:55',1),
+ (5,7,1,8000,'2015-03-03 12:04:24',1),
+ (6,3,1,300,'2015-03-03 12:17:25',1),
+ (7,10,2,15200,'2015-09-02 14:42:19',1),
+ (8,3,2,8100,'2016-01-13 21:41:16',1),
+ (9,15,2,15200,'2016-01-27 12:47:09',1),
+ (10,15,2,33300,'2016-01-27 12:56:44',1),
+ (11,15,1,100,'2016-01-27 12:58:00',1),
+ (12,15,1,8000,'2016-01-27 13:02:44',1),
+ (13,17,2,20000,'2016-01-27 14:02:11',1),
+ (14,4,1,100,'2016-01-27 14:09:39',1);
+/*!40000 ALTER TABLE `payment` ENABLE KEYS */;
+
+
+--
+-- Definition of table `payment_has_projects`
+--
+
+DROP TABLE IF EXISTS `payment_has_projects`;
+CREATE TABLE `payment_has_projects` (
+  `idPayment_Has_Projects` int(11) NOT NULL AUTO_INCREMENT,
+  `projects_idprojects` int(11) NOT NULL,
+  `Payment_idPayment` int(11) NOT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `is_purchase` int(11) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  PRIMARY KEY (`idPayment_Has_Projects`),
+  KEY `fk_Payment_Has_Projects_projects1` (`projects_idprojects`),
+  KEY `fk_Payment_Has_Projects_Payment1` (`Payment_idPayment`),
+  CONSTRAINT `fk_Payment_Has_Projects_Payment1` FOREIGN KEY (`Payment_idPayment`) REFERENCES `payment` (`idPayment`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Payment_Has_Projects_projects1` FOREIGN KEY (`projects_idprojects`) REFERENCES `projects` (`idprojects`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment_has_projects`
+--
+
+/*!40000 ALTER TABLE `payment_has_projects` DISABLE KEYS */;
+INSERT INTO `payment_has_projects` (`idPayment_Has_Projects`,`projects_idprojects`,`Payment_idPayment`,`qty`,`is_purchase`,`price`) VALUES 
+ (1,2,1,1,1,3200),
+ (2,1,1,1,1,12000),
+ (3,3,2,1,1,4600),
+ (4,4,2,1,1,33000),
+ (5,1,3,1,1,12000),
+ (6,2,4,1,1,3200),
+ (7,3,4,1,1,4600),
+ (8,4,4,1,1,33000),
+ (9,5,5,1,1,8000),
+ (10,6,6,1,1,300),
+ (11,1,7,1,1,12000),
+ (12,2,7,1,1,3200),
+ (13,7,8,1,1,100),
+ (14,5,8,1,1,8000),
+ (15,1,9,1,1,12000),
+ (16,2,9,1,1,3200),
+ (17,4,10,1,1,33000),
+ (18,6,10,1,1,300),
+ (19,7,11,1,1,100),
+ (20,5,12,1,1,8000),
+ (21,1,13,1,1,12000),
+ (22,5,13,1,1,8000),
+ (23,7,14,1,1,100);
+/*!40000 ALTER TABLE `payment_has_projects` ENABLE KEYS */;
+
+
+--
+-- Definition of table `pro_has_view`
+--
+
+DROP TABLE IF EXISTS `pro_has_view`;
+CREATE TABLE `pro_has_view` (
+  `idpro_has_view` int(11) NOT NULL AUTO_INCREMENT,
+  `click` int(11) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idpro_has_view`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pro_has_view`
+--
+
+/*!40000 ALTER TABLE `pro_has_view` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pro_has_view` ENABLE KEYS */;
+
+
+--
+-- Definition of table `projects`
+--
+
+DROP TABLE IF EXISTS `projects`;
+CREATE TABLE `projects` (
+  `idprojects` int(11) NOT NULL AUTO_INCREMENT,
+  `Project_name` varchar(45) DEFAULT NULL,
+  `Price` varchar(45) DEFAULT NULL,
+  `user_iduser` int(11) NOT NULL,
+  `Category_idCategory` int(11) NOT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `Database_idDatabase` int(11) NOT NULL,
+  `pro_lan` varchar(1000) DEFAULT NULL,
+  `Sub_Category_id` int(11) NOT NULL,
+  `upload_file_idupload` int(11) NOT NULL,
+  `upload_pic_idupload_pic` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `Upload_demo_idUpload_demo` int(11) NOT NULL,
+  PRIMARY KEY (`idprojects`),
+  KEY `fk_projects_user1` (`user_iduser`),
+  KEY `fk_projects_Category1` (`Category_idCategory`),
+  KEY `fk_projects_Database1` (`Database_idDatabase`),
+  KEY `fk_projects_Sub_Category1` (`Sub_Category_id`),
+  KEY `fk_projects_upload_file1` (`upload_file_idupload`),
+  KEY `fk_projects_upload_pic1` (`upload_pic_idupload_pic`),
+  KEY `fk_projects_Upload_demo1` (`Upload_demo_idUpload_demo`),
+  CONSTRAINT `fk_projects_Category1` FOREIGN KEY (`Category_idCategory`) REFERENCES `category` (`idCategory`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_projects_Database1` FOREIGN KEY (`Database_idDatabase`) REFERENCES `database1` (`idDatabase`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_projects_Sub_Category1` FOREIGN KEY (`Sub_Category_id`) REFERENCES `sub_category` (`idSub_Category`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_projects_Upload_demo1` FOREIGN KEY (`Upload_demo_idUpload_demo`) REFERENCES `upload_demo` (`idUpload_demo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_projects_upload_file1` FOREIGN KEY (`upload_file_idupload`) REFERENCES `upload_file` (`idupload`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_projects_upload_pic1` FOREIGN KEY (`upload_pic_idupload_pic`) REFERENCES `upload_pic` (`idupload_pic`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_projects_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projects`
+--
+
+/*!40000 ALTER TABLE `projects` DISABLE KEYS */;
+INSERT INTO `projects` (`idprojects`,`Project_name`,`Price`,`user_iduser`,`Category_idCategory`,`description`,`Database_idDatabase`,`pro_lan`,`Sub_Category_id`,`upload_file_idupload`,`upload_pic_idupload_pic`,`status`,`Upload_demo_idUpload_demo`) VALUES 
+ (1,'Ecommerce application','12000',3,1,'On the Insert tab, the galleries include items that are designed to coordinate with the overall look of your document. You can use these galleries to insert tables, headers, footers, lists, cover pages, and other document building blocks. When you create pictures, charts, or diagrams, they also coordinate with your current document look.\r\n',1,'Java,Css,Ajax,Xml,Html,Jsp,Javascript,',1,1,1,1,1),
+ (2,'Ecommerce application 2','3200',3,1,'On the Insert tab, the galleries include items that are designed to coordinate with the overall look of your document. You can use these galleries to insert tables, headers, footers, lists, cover pages, and other document building blocks. When you create pictures, charts, or diagrams, they also coordinate with your current document look.\r\n',1,'Java,Php,Css,Ajax,Xml,Html,',1,2,2,1,1),
+ (3,'cloud application','4600',4,1,'On the Insert tab, the galleries include items that are designed to coordinate with the overall look of your document. You can use these galleries to insert tables, headers, footers, lists, cover pages, and other document building blocks. When you create pictures, charts, or diagrams, they also coordinate with your current document look.\r\n',1,'Java,Jsp,Css,Ajax,Xml,Bootstrap,',1,3,3,1,1),
+ (4,'php Ecommerce application','33000',4,2,'abcdefabcdefabcdefabcdefabcdefabfabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef',1,'Java,Php,Css,Html,Xml,Jq,Js,',7,5,5,1,2),
+ (5,'POS','8000',4,1,'ipmzls,djsgjsld',1,'Java,Css,Ajax,Xml,Html,',2,6,6,1,3),
+ (6,'abc123','300',4,3,'hdsd',1,'Java,Css,Ajax,',5,7,7,1,4),
+ (7,'Web App','100',4,2,'  sdcdcasdmkl.sd\r\nvsdv\r\nadf\r\nva\r\ndfvfvbdfvbdc\r\nd',2,'Java,Css,Ajax,Xml,Hibernate,Aa,',7,8,8,1,5);
+/*!40000 ALTER TABLE `projects` ENABLE KEYS */;
+
+
+--
+-- Definition of table `sub_category`
+--
+
+DROP TABLE IF EXISTS `sub_category`;
+CREATE TABLE `sub_category` (
+  `idSub_Category` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idSub_Category`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sub_category`
+--
+
+/*!40000 ALTER TABLE `sub_category` DISABLE KEYS */;
+INSERT INTO `sub_category` (`idSub_Category`,`Name`,`status`) VALUES 
+ (1,'Mac',1),
+ (2,'Windows',1),
+ (3,'Linux',1),
+ (4,'Apple Mobile',1),
+ (5,'Window Mobile',1),
+ (6,'Android Mobile',1),
+ (7,'Ecommerce',1),
+ (8,'Cloud',1),
+ (9,'One Page Web Site',1),
+ (10,'Social',1),
+ (11,'Shopping Cart',1),
+ (12,'Infromation Site',1),
+ (13,'Other',1);
+/*!40000 ALTER TABLE `sub_category` ENABLE KEYS */;
+
+
+--
+-- Definition of table `upload_demo`
+--
+
+DROP TABLE IF EXISTS `upload_demo`;
+CREATE TABLE `upload_demo` (
+  `idUpload_demo` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(4000) DEFAULT NULL,
+  `path` varchar(4000) DEFAULT NULL,
+  PRIMARY KEY (`idUpload_demo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `upload_demo`
+--
+
+/*!40000 ALTER TABLE `upload_demo` DISABLE KEYS */;
+INSERT INTO `upload_demo` (`idUpload_demo`,`name`,`path`) VALUES 
+ (1,'3.jpg','upload\\Users\\ishan_ishan@gmail.com\\Projects\\cloud application\\img\\5.jpg'),
+ (2,'DataTables-1.10.5.zip','upload\\Users\\ishan_ishan@gmail.com\\Projects\\php Ecommerce application\\demo\\DataTables-1.10.5.zip'),
+ (3,'DataTables-1.10.5.zip','upload\\Users\\ishan_ishan@gmail.com\\Projects\\POS\\demo\\DataTables-1.10.5.zip'),
+ (4,'DataTables-1.10.5.zip','upload\\Users\\ishan_ishan@gmail.com\\Projects\\abc123\\demo\\CSS.rar'),
+ (5,'VolleyDemo.rar','upload\\Users\\ishan_ishan@gmail.com\\Projects\\Web App\\demo\\10487337_719429814823190_3211062678713429990_n.jpg');
+/*!40000 ALTER TABLE `upload_demo` ENABLE KEYS */;
+
+
+--
+-- Definition of table `upload_file`
+--
+
+DROP TABLE IF EXISTS `upload_file`;
+CREATE TABLE `upload_file` (
+  `idupload` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(4500) DEFAULT NULL,
+  `path` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`idupload`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `upload_file`
+--
+
+/*!40000 ALTER TABLE `upload_file` DISABLE KEYS */;
+INSERT INTO `upload_file` (`idupload`,`name`,`path`) VALUES 
+ (1,'TableTools example - Bootstrap styling.pdf','upload\\Users\\abc_abc@gmail.com\\Projects\\Ecommerce application\\file\\TableTools example - Bootstrap styling.pdf'),
+ (2,'TableTools example - Bootstrap styling.pdf','upload\\Users\\abc_abc@gmail.com\\Projects\\Ecommerce application 2\\file\\TableTools example - Bootstrap styling.pdf'),
+ (3,'5.jpg','upload\\Users\\ishan_ishan@gmail.com\\Projects\\cloud application\\file\\5.jpg'),
+ (5,'DataTables-1.10.5.zip','upload\\Users\\ishan_ishan@gmail.com\\Projects\\php Ecommerce application\\file\\DataTables-1.10.5.zip'),
+ (6,'DataTables-1.10.5.zip','upload\\Users\\ishan_ishan@gmail.com\\Projects\\POS\\file\\DataTables-1.10.5.zip'),
+ (7,'CSS.rar','upload\\Users\\ishan_ishan@gmail.com\\Projects\\abc123\\file\\CSS.rar'),
+ (8,'10487337_719429814823190_3211062678713429990_n.jpg','upload\\Users\\ishan_ishan@gmail.com\\Projects\\Web App\\file\\10487337_719429814823190_3211062678713429990_n.jpg');
+/*!40000 ALTER TABLE `upload_file` ENABLE KEYS */;
+
+
+--
+-- Definition of table `upload_pic`
+--
+
+DROP TABLE IF EXISTS `upload_pic`;
+CREATE TABLE `upload_pic` (
+  `idupload_pic` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(10000) DEFAULT NULL,
+  `path` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`idupload_pic`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `upload_pic`
+--
+
+/*!40000 ALTER TABLE `upload_pic` DISABLE KEYS */;
+INSERT INTO `upload_pic` (`idupload_pic`,`name`,`path`) VALUES 
+ (1,'2.jpg','upload\\Users\\abc_abc@gmail.com\\Projects\\Ecommerce application\\img\\1.jpg'),
+ (2,'3.jpg','upload\\Users\\abc_abc@gmail.com\\Projects\\Ecommerce application 2\\img\\3.png'),
+ (3,'5.jpg','upload\\Users\\ishan_ishan@gmail.com\\Projects\\cloud application\\img\\5.png'),
+ (5,'3.jpg','upload\\Users\\ishan_ishan@gmail.com\\Projects\\php Ecommerce application\\img\\3.png'),
+ (6,'2.jpg','upload\\Users\\ishan_ishan@gmail.com\\Projects\\POS\\img\\2.png'),
+ (7,'screenshot.png','upload\\Users\\ishan_ishan@gmail.com\\Projects\\abc123\\img\\3.png'),
+ (8,'11232223_766243006842224_7922507203328522310_n.jpg','upload\\Users\\ishan_ishan@gmail.com\\Projects\\Web App\\img\\11232223_766243006842224_7922507203328522310_n.jpg');
+/*!40000 ALTER TABLE `upload_pic` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
+  `fname` varchar(45) DEFAULT NULL,
+  `lname` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`iduser`,`fname`,`lname`,`email`,`description`) VALUES 
+ (1,'bhagya','perera','bhagyaperera142@gmail.com',NULL),
+ (2,'abc','abc','abc@gmail.com',''),
+ (3,'abc','abc','abc@gmail.1com',NULL),
+ (4,'ishan','randeniya','ishan@gmail.com','Edit_Admin_profile'),
+ (5,'seller','seller','seler',''),
+ (6,'buyer','buyer','buyer',''),
+ (7,'bhagya1995','perera','bhagyaperera1995@gmail.com',NULL),
+ (8,'test','qwe','qwe@gmail',NULL),
+ (9,'Damith','Damith','damith@gmail.com',''),
+ (10,'kavisth','vithakshana','kavish@gmail.com',NULL),
+ (12,NULL,'other2',NULL,'nooooooooooooo'),
+ (13,NULL,'nayoma','umeshnayoma@gmail.com','noooo '),
+ (14,'kumu','koralaya','kumakoralaya@gmail.com','koralaya'),
+ (15,'test','test','test','test'),
+ (17,'amal','kamal','amal@gmail.com','nnooooo'),
+ (18,'wijayantha','wijayantha','wijayantha@gmail.com','gghbjn'),
+ (19,'wwe','wwe','wwe@gmail.com','hjhh');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user_login`
+--
+
+DROP TABLE IF EXISTS `user_login`;
+CREATE TABLE `user_login` (
+  `iduser_login` int(11) NOT NULL AUTO_INCREMENT,
+  `uname` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `Location` varchar(4000) DEFAULT NULL,
+  `user_iduser` int(11) NOT NULL,
+  `Job_Location` varchar(10000) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `User_type_idUser_type` int(11) NOT NULL,
+  `demo_File_Location` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`iduser_login`),
+  KEY `fk_user_login_user1` (`user_iduser`),
+  KEY `fk_user_login_User_type1` (`User_type_idUser_type`),
+  CONSTRAINT `fk_user_login_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_login_User_type1` FOREIGN KEY (`User_type_idUser_type`) REFERENCES `user_type` (`idUser_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_login`
+--
+
+/*!40000 ALTER TABLE `user_login` DISABLE KEYS */;
+INSERT INTO `user_login` (`iduser_login`,`uname`,`password`,`Location`,`user_iduser`,`Job_Location`,`status`,`User_type_idUser_type`,`demo_File_Location`) VALUES 
+ (1,'bhagya','123','upload\\Users\\bhagya_bhagyawijayantha@yahoo.com',1,'upload\\Users\\bhagya_bhagyawijayantha@yahoo.com\\jobs',1,5,'a'),
+ (2,'abc1','12345','',2,'',1,1,'a'),
+ (3,'abc','123','upload\\Users\\abc_abc@gmail.com',3,'upload\\Users\\abc_abc@gmail.com\\jobs',1,2,'a'),
+ (4,'ishan','123','upload\\Users\\ishan_ishan@gmail.com',4,'upload\\Users\\ishan_ishan@gmail.com\\jobs',1,2,'a'),
+ (5,'seller','123','',5,'',1,1,'a'),
+ (6,'buyer','123','',6,'',1,1,'a'),
+ (7,'test','123','upload\\Users\\bhagya1995_bhagyaperera1995@gmail.com',7,'upload\\Users\\bhagya1995_bhagyaperera1995@gmail.com\\jobs',1,2,NULL),
+ (8,'test','123','upload\\Users\\test_qwe@gmail',8,'upload\\Users\\test_qwe@gmail\\jobs',1,2,NULL),
+ (9,'Damith','damith','',9,'',1,20,NULL),
+ (10,'kavish','kavish123','upload\\Users\\kavish_kavish@gmail.com',10,'upload\\Users\\kavish_kavish@gmail.com\\jobs',1,2,NULL),
+ (11,'other123','12345','',12,'',1,21,NULL),
+ (12,'umesh','umesh123','',13,'',1,21,NULL),
+ (13,'kuma','1234','',14,'',1,21,NULL),
+ (14,'test','12345','',15,'',1,2,NULL),
+ (15,'amal','1995','',17,'',1,2,NULL),
+ (16,'wijayantha','123456','',18,'',1,1,NULL),
+ (17,'wwe','wwe','',19,'',1,2,NULL);
+/*!40000 ALTER TABLE `user_login` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user_login_details`
+--
+
+DROP TABLE IF EXISTS `user_login_details`;
+CREATE TABLE `user_login_details` (
+  `iduser_login_details` int(11) NOT NULL AUTO_INCREMENT,
+  `ipaddress` varchar(45) DEFAULT NULL,
+  `intime` varchar(45) DEFAULT NULL,
+  `outtime` varchar(45) DEFAULT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `user_login_iduser_login` int(11) NOT NULL,
+  `Mac_Address` varchar(45) DEFAULT NULL,
+  `Browser_details` varchar(4000) DEFAULT NULL,
+  `Operation_System` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`iduser_login_details`),
+  KEY `fk_user_login_details_user_login1` (`user_login_iduser_login`),
+  CONSTRAINT `fk_user_login_details_user_login1` FOREIGN KEY (`user_login_iduser_login`) REFERENCES `user_login` (`iduser_login`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_login_details`
+--
+
+/*!40000 ALTER TABLE `user_login_details` DISABLE KEYS */;
+INSERT INTO `user_login_details` (`iduser_login_details`,`ipaddress`,`intime`,`outtime`,`description`,`user_login_iduser_login`,`Mac_Address`,`Browser_details`,`Operation_System`) VALUES 
+ (1,'127.0.0.1','Thu Feb 26 13:10:29 IST 2015','','',1,NULL,NULL,NULL),
+ (2,'127.0.0.1','Thu Feb 26 13:25:03 IST 2015','Thu Feb 26 13:25:11 IST 2015','',1,NULL,NULL,NULL),
+ (3,'127.0.0.1','Thu Feb 26 13:25:31 IST 2015','Thu Feb 26 13:30:00 IST 2015','',1,NULL,NULL,NULL),
+ (4,'127.0.0.1','Thu Feb 26 13:30:29 IST 2015','Thu Feb 26 13:30:50 IST 2015','',2,NULL,NULL,NULL),
+ (5,'127.0.0.1','Thu Feb 26 13:30:51 IST 2015','Thu Feb 26 14:06:12 IST 2015','',1,NULL,NULL,NULL),
+ (6,'127.0.0.1','Thu Feb 26 14:08:10 IST 2015','','',1,NULL,NULL,NULL),
+ (7,'127.0.0.1','Thu Feb 26 14:08:33 IST 2015','Thu Feb 26 14:10:35 IST 2015','',1,NULL,NULL,NULL),
+ (8,'127.0.0.1','Thu Feb 26 14:10:38 IST 2015','Thu Feb 26 14:10:54 IST 2015','',1,NULL,NULL,NULL),
+ (9,'127.0.0.1','Thu Feb 26 14:21:16 IST 2015','Thu Feb 26 14:21:30 IST 2015','',1,NULL,NULL,NULL),
+ (10,'127.0.0.1','Thu Feb 26 14:28:54 IST 2015','Thu Feb 26 14:29:00 IST 2015','',1,NULL,NULL,NULL),
+ (11,'127.0.0.1','Thu Feb 26 14:29:50 IST 2015','Thu Feb 26 14:29:55 IST 2015','',1,NULL,NULL,NULL),
+ (12,'127.0.0.1','Thu Feb 26 15:22:17 IST 2015','Thu Feb 26 15:24:42 IST 2015','',1,NULL,NULL,NULL),
+ (13,'127.0.0.1','Thu Feb 26 15:33:48 IST 2015','Thu Feb 26 15:33:51 IST 2015','',1,NULL,NULL,NULL),
+ (14,'127.0.0.1','Thu Feb 26 16:00:05 IST 2015','Thu Feb 26 16:00:10 IST 2015','',1,NULL,NULL,NULL),
+ (15,'127.0.0.1','Thu Feb 26 16:00:12 IST 2015','','',1,NULL,NULL,NULL),
+ (16,'127.0.0.1','Thu Feb 26 16:19:31 IST 2015','Thu Feb 26 16:20:32 IST 2015','',1,NULL,NULL,NULL),
+ (17,'127.0.0.1','Thu Feb 26 16:20:47 IST 2015','Thu Feb 26 16:27:06 IST 2015','',1,NULL,NULL,NULL),
+ (18,'127.0.0.1','Thu Feb 26 16:27:10 IST 2015','Thu Feb 26 16:27:15 IST 2015','',1,NULL,NULL,NULL),
+ (19,'127.0.0.1','Thu Feb 26 16:27:21 IST 2015','Thu Feb 26 16:27:39 IST 2015','',3,NULL,NULL,NULL),
+ (20,'127.0.0.1','Thu Feb 26 16:27:47 IST 2015','Thu Feb 26 16:49:21 IST 2015','',4,NULL,NULL,NULL),
+ (21,'127.0.0.1','Thu Feb 26 16:49:27 IST 2015','','',4,NULL,NULL,NULL),
+ (22,'127.0.0.1','Thu Feb 26 17:08:51 IST 2015','','',1,NULL,NULL,NULL),
+ (23,'127.0.0.1','Thu Feb 26 17:46:47 IST 2015','Thu Feb 26 17:47:07 IST 2015','',1,NULL,NULL,NULL),
+ (24,'127.0.0.1','Thu Feb 26 17:47:12 IST 2015','','',4,NULL,NULL,NULL),
+ (25,'127.0.0.1','Sun Mar 01 23:56:58 IST 2015','Sun Mar 01 23:57:03 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (26,'127.0.0.1','Sun Mar 01 23:57:09 IST 2015','Sun Mar 01 23:58:35 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (27,'127.0.0.1','Sun Mar 01 23:58:37 IST 2015','Sun Mar 01 23:58:55 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (28,'127.0.0.1','Sun Mar 01 23:59:01 IST 2015','Mon Mar 02 00:05:12 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (29,'127.0.0.1','Mon Mar 02 00:05:14 IST 2015','Mon Mar 02 00:05:27 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (30,'127.0.0.1','Mon Mar 02 00:05:33 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (31,'127.0.0.1','Mon Mar 02 00:10:39 IST 2015','Mon Mar 02 00:11:52 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (32,'127.0.0.1','Mon Mar 02 00:11:53 IST 2015','Mon Mar 02 00:12:57 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (33,'127.0.0.1','Mon Mar 02 00:13:03 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (34,'127.0.0.1','Mon Mar 02 11:11:18 IST 2015','Mon Mar 02 11:24:19 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (35,'127.0.0.1','Mon Mar 02 11:25:03 IST 2015','Mon Mar 02 11:28:33 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (36,'127.0.0.1','Mon Mar 02 11:34:10 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (37,'127.0.0.1','Mon Mar 02 12:19:07 IST 2015','Mon Mar 02 12:48:53 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (38,'127.0.0.1','Mon Mar 02 12:49:01 IST 2015','Mon Mar 02 13:10:12 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (39,'127.0.0.1','Mon Mar 02 13:10:26 IST 2015','Mon Mar 02 13:13:38 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (40,'127.0.0.1','Mon Mar 02 13:13:45 IST 2015','Mon Mar 02 13:31:12 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (41,'127.0.0.1','Mon Mar 02 13:31:18 IST 2015','Mon Mar 02 13:31:35 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (42,'127.0.0.1','Mon Mar 02 13:31:43 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (43,'127.0.0.1','Mon Mar 02 14:39:43 IST 2015','Mon Mar 02 14:41:44 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (44,'127.0.0.1','Mon Mar 02 14:41:52 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (45,'127.0.0.1','Mon Mar 02 20:43:54 IST 2015','Mon Mar 02 21:07:07 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (46,'127.0.0.1','Mon Mar 02 21:07:13 IST 2015','Mon Mar 02 21:07:31 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (47,'127.0.0.1','Mon Mar 02 21:07:37 IST 2015','Mon Mar 02 21:08:19 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (48,'127.0.0.1','Mon Mar 02 21:08:22 IST 2015','Mon Mar 02 21:08:58 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (49,'127.0.0.1','Mon Mar 02 21:09:05 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (50,'127.0.0.1','Mon Mar 02 21:35:41 IST 2015','Mon Mar 02 21:36:51 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (51,'127.0.0.1','Mon Mar 02 21:37:10 IST 2015','Mon Mar 02 21:42:39 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (52,'127.0.0.1','Mon Mar 02 21:42:46 IST 2015','Mon Mar 02 21:43:02 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (53,'127.0.0.1','Mon Mar 02 21:43:08 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (54,'127.0.0.1','Mon Mar 02 21:48:16 IST 2015','Mon Mar 02 21:51:38 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (55,'127.0.0.1','Mon Mar 02 21:51:40 IST 2015','Mon Mar 02 21:54:31 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (56,'127.0.0.1','Mon Mar 02 21:54:40 IST 2015','Mon Mar 02 21:55:16 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (57,'127.0.0.1','Mon Mar 02 21:55:20 IST 2015','Mon Mar 02 22:19:30 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (58,'127.0.0.1','Mon Mar 02 22:19:33 IST 2015','Mon Mar 02 22:19:45 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (59,'127.0.0.1','Mon Mar 02 22:19:55 IST 2015','Mon Mar 02 22:20:08 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (60,'127.0.0.1','Mon Mar 02 22:20:27 IST 2015','Mon Mar 02 22:20:33 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (61,'127.0.0.1','Mon Mar 02 22:20:38 IST 2015','Mon Mar 02 22:23:39 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (62,'127.0.0.1','Mon Mar 02 22:23:42 IST 2015','Mon Mar 02 22:44:24 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (63,'127.0.0.1','Mon Mar 02 22:44:29 IST 2015','Mon Mar 02 22:56:28 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (64,'127.0.0.1','Mon Mar 02 22:56:34 IST 2015','Mon Mar 02 23:28:28 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (65,'127.0.0.1','Mon Mar 02 23:28:51 IST 2015','Mon Mar 02 23:30:27 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (66,'127.0.0.1','Mon Mar 02 23:30:30 IST 2015','Mon Mar 02 23:59:40 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (67,'127.0.0.1','Mon Mar 02 23:59:46 IST 2015','Tue Mar 03 00:09:05 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (68,'127.0.0.1','Tue Mar 03 00:25:45 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (69,'127.0.0.1','Tue Mar 03 00:35:57 IST 2015','Tue Mar 03 01:02:44 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (70,'127.0.0.1','Tue Mar 03 01:02:51 IST 2015','Tue Mar 03 01:06:16 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (71,'127.0.0.1','Tue Mar 03 01:09:58 IST 2015','Tue Mar 03 01:14:40 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (72,'127.0.0.1','Tue Mar 03 01:14:46 IST 2015','Tue Mar 03 01:21:14 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (73,'127.0.0.1','Tue Mar 03 01:21:17 IST 2015','Tue Mar 03 01:34:34 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (74,'127.0.0.1','Tue Mar 03 01:34:42 IST 2015','Tue Mar 03 01:35:06 IST 2015','',6,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (75,'127.0.0.1','Tue Mar 03 01:35:08 IST 2015','Tue Mar 03 01:38:46 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (76,'127.0.0.1','Tue Mar 03 01:41:59 IST 2015','Tue Mar 03 01:42:06 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (77,'127.0.0.1','Tue Mar 03 01:42:13 IST 2015','Tue Mar 03 01:42:49 IST 2015','',6,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (78,'127.0.0.1','Tue Mar 03 01:43:14 IST 2015','Tue Mar 03 01:43:36 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (79,'127.0.0.1','Tue Mar 03 01:43:55 IST 2015','Tue Mar 03 01:44:09 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (80,'127.0.0.1','Tue Mar 03 01:44:21 IST 2015','Tue Mar 03 01:44:27 IST 2015','',6,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (81,'127.0.0.1','Tue Mar 03 01:44:29 IST 2015','Tue Mar 03 01:44:50 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (82,'127.0.0.1','Tue Mar 03 01:44:54 IST 2015','Tue Mar 03 01:44:58 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (83,'127.0.0.1','Tue Mar 03 07:55:52 IST 2015','Tue Mar 03 08:45:00 IST 2015','',7,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (84,'127.0.0.1','Tue Mar 03 08:45:05 IST 2015','Tue Mar 03 08:49:08 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (85,'127.0.0.1','Tue Mar 03 08:49:31 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',7,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (86,'127.0.0.1','Tue Mar 03 09:50:30 IST 2015','Tue Mar 03 09:58:28 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (87,'127.0.0.1','Tue Mar 03 09:58:34 IST 2015','Tue Mar 03 09:59:56 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (88,'127.0.0.1','Tue Mar 03 09:59:59 IST 2015','Tue Mar 03 10:00:19 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (89,'127.0.0.1','Tue Mar 03 10:00:25 IST 2015','Tue Mar 03 10:01:51 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (90,'127.0.0.1','Tue Mar 03 10:01:53 IST 2015','Tue Mar 03 10:02:16 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (91,'127.0.0.1','Tue Mar 03 10:02:27 IST 2015','Tue Mar 03 10:03:02 IST 2015','',7,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (92,'127.0.0.1','Tue Mar 03 10:03:03 IST 2015','Tue Mar 03 10:03:28 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (93,'127.0.0.1','Tue Mar 03 10:03:35 IST 2015','Tue Mar 03 10:03:55 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (94,'127.0.0.1','Tue Mar 03 10:04:01 IST 2015','Tue Mar 03 10:08:29 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (95,'127.0.0.1','Tue Mar 03 10:08:56 IST 2015','Tue Mar 03 10:50:45 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (96,'127.0.0.1','Tue Mar 03 10:50:51 IST 2015','Tue Mar 03 10:51:07 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (97,'127.0.0.1','Tue Mar 03 10:51:15 IST 2015','Tue Mar 03 11:31:23 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (98,'127.0.0.1','Tue Mar 03 12:02:39 IST 2015','Tue Mar 03 12:05:15 IST 2015','',7,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (99,'127.0.0.1','Tue Mar 03 12:05:47 IST 2015','Tue Mar 03 12:05:54 IST 2015','',7,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (100,'127.0.0.1','Tue Mar 03 12:09:22 IST 2015','Tue Mar 03 12:15:26 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (101,'127.0.0.1','Tue Mar 03 12:15:28 IST 2015','Tue Mar 03 12:15:33 IST 2015','',4,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (102,'127.0.0.1','Tue Mar 03 12:15:37 IST 2015','Tue Mar 03 12:19:33 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (103,'127.0.0.1','Tue Mar 03 12:19:43 IST 2015','Tue Mar 03 12:21:25 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (104,'127.0.0.1','Tue Mar 03 12:21:30 IST 2015','Tue Mar 03 12:27:07 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (105,'127.0.0.1','Tue Mar 03 12:27:08 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (106,'127.0.0.1','Tue Mar 03 12:27:57 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (107,'127.0.0.1','Tue Mar 03 12:29:54 IST 2015','Tue Mar 03 12:35:00 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (108,'127.0.0.1','Tue Mar 03 12:35:11 IST 2015','Tue Mar 03 12:41:33 IST 2015','',3,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (109,'127.0.0.1','Tue Mar 03 12:41:35 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (110,'127.0.0.1','Sat Mar 07 09:40:54 IST 2015','Sat Mar 07 09:41:07 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (111,'127.0.0.1','Sat Mar 07 09:41:15 IST 2015','Sat Mar 07 09:49:33 IST 2015','',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (112,'127.0.0.1','Sat Mar 07 09:49:39 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (113,'127.0.0.1','Sat Mar 07 09:50:11 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (114,'127.0.0.1','Mon Mar 09 14:48:26 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-40.0.2214.115','Windows'),
+ (115,'127.0.0.1','Sat Mar 14 12:47:28 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-41.0.2272.89','Windows'),
+ (116,'127.0.0.1','Sat Mar 14 12:57:00 IST 2015','Sat Mar 14 13:00:03 IST 2015','',1,'00-50-56-C0-00-01','Chrome-41.0.2272.89','Windows'),
+ (117,'127.0.0.1','Sat Mar 14 13:00:11 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',4,'00-50-56-C0-00-01','Chrome-41.0.2272.89','Windows'),
+ (118,'127.0.0.1','Sat Mar 14 20:31:36 IST 2015','Sat Mar 14 20:32:15 IST 2015','',4,'00-50-56-C0-00-01','Chrome-41.0.2272.89','Windows'),
+ (119,'127.0.0.1','Sat Mar 14 20:32:21 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-41.0.2272.89','Windows'),
+ (120,'127.0.0.1','Sat Mar 14 20:34:09 IST 2015','Sat Mar 14 20:34:57 IST 2015','',1,'00-50-56-C0-00-01','Chrome-41.0.2272.89','Windows'),
+ (121,'127.0.0.1','Sat Mar 14 20:35:02 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',4,'00-50-56-C0-00-01','Chrome-41.0.2272.89','Windows'),
+ (122,'127.0.0.1','Tue Mar 24 15:28:30 IST 2015','Tue Mar 24 15:29:18 IST 2015','',4,'00-50-56-C0-00-01','Chrome-41.0.2272.101','Windows'),
+ (123,'127.0.0.1','Tue Mar 24 15:29:24 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-41.0.2272.101','Windows'),
+ (124,'127.0.0.1','Thu Mar 26 20:43:40 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36',1,'00-50-56-C0-00-01','Chrome-41.0.2272.101','Windows'),
+ (125,'127.0.0.1','Wed Jul 01 12:56:45 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.130','Windows'),
+ (126,'127.0.0.1','Mon Jul 13 12:59:59 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.132','Windows'),
+ (127,'127.0.0.1','Tue Jul 14 22:07:29 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.132','Windows'),
+ (128,'127.0.0.1','Tue Jul 14 22:07:42 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.132','Windows'),
+ (129,'127.0.0.1','Thu Jul 16 10:28:24 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (130,'127.0.0.1','Sat Jul 18 09:01:30 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (131,'127.0.0.1','Tue Jul 21 09:08:47 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (132,'127.0.0.1','Wed Jul 22 12:30:57 IST 2015','Wed Jul 22 12:33:53 IST 2015','',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (133,'127.0.0.1','Wed Jul 22 12:34:01 IST 2015','Wed Jul 22 12:37:00 IST 2015','',4,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (134,'127.0.0.1','Wed Jul 22 12:37:05 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (135,'127.0.0.1','Sat Jul 25 09:26:54 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (136,'127.0.0.1','Sat Jul 25 09:54:32 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (137,'127.0.0.1','Sat Jul 25 10:45:33 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-43.0.2357.134','Windows'),
+ (138,'127.0.0.1','Fri Jul 31 20:24:54 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-44.0.2403.107','Windows'),
+ (139,'127.0.0.1','Fri Jul 31 20:27:32 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-44.0.2403.107','Windows'),
+ (140,'127.0.0.1','Sat Aug 01 23:37:21 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-44.0.2403.125','Windows'),
+ (141,'127.0.0.1','Sun Aug 02 00:34:35 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-44.0.2403.125','Windows'),
+ (142,'127.0.0.1','Sat Aug 15 10:18:47 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-44.0.2403.155','Windows'),
+ (143,'127.0.0.1','Sun Aug 23 09:17:29 IST 2015','Sun Aug 23 09:24:12 IST 2015','',1,'08-00-27-00-00-3E','Chrome-44.0.2403.157','Windows'),
+ (144,'127.0.0.1','Sun Aug 23 09:24:19 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-44.0.2403.157','Windows'),
+ (145,'127.0.0.1','Sun Aug 23 09:30:01 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-44.0.2403.157','Windows'),
+ (146,'0:0:0:0:0:0:0:1','Wed Sep 02 14:29:02 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (147,'0:0:0:0:0:0:0:1','Wed Sep 02 14:33:40 IST 2015','Wed Sep 02 14:35:11 IST 2015','',1,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (148,'0:0:0:0:0:0:0:1','Wed Sep 02 14:35:19 IST 2015','Wed Sep 02 14:36:01 IST 2015','',9,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (149,'0:0:0:0:0:0:0:1','Wed Sep 02 14:36:03 IST 2015','Wed Sep 02 14:37:16 IST 2015','',1,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (150,'0:0:0:0:0:0:0:1','Wed Sep 02 14:38:56 IST 2015','Wed Sep 02 14:39:37 IST 2015','',4,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (151,'0:0:0:0:0:0:0:1','Wed Sep 02 14:40:54 IST 2015','Wed Sep 02 14:41:03 IST 2015','',2,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (152,'0:0:0:0:0:0:0:1','Wed Sep 02 14:41:17 IST 2015','Wed Sep 02 14:41:22 IST 2015','',5,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (153,'0:0:0:0:0:0:0:1','Wed Sep 02 14:41:39 IST 2015','Wed Sep 02 14:44:06 IST 2015','',10,'08-00-27-00-00-3E','Chrome-45.0.2454.85','Windows'),
+ (154,'0:0:0:0:0:0:0:1','Sun Nov 01 11:58:12 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-46.0.2490.80','Windows'),
+ (155,'0:0:0:0:0:0:0:1','Sun Nov 01 12:03:42 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-46.0.2490.80','Windows'),
+ (156,'127.0.0.1','Sun Nov 15 17:23:40 IST 2015','Sun Nov 15 17:27:26 IST 2015','',2,'08-00-27-00-00-3E','Firefox-42.0','Windows'),
+ (157,'127.0.0.1','Sun Nov 15 17:27:51 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0',2,'08-00-27-00-00-3E','Firefox-42.0','Windows'),
+ (158,'0:0:0:0:0:0:0:1','Tue Nov 24 08:34:47 IST 2015','Tue Nov 24 09:04:43 IST 2015','',1,'08-00-27-00-00-3E','Chrome-46.0.2490.86','Windows'),
+ (159,'0:0:0:0:0:0:0:1','Wed Nov 25 22:07:41 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-46.0.2490.86','Windows'),
+ (160,'169.254.34.77','Wed Nov 25 22:11:17 IST 2015','','Mozilla/5.0',1,'08-00-27-00-00-3E','UnKnown, More-Info: Mozilla/5.0','UnKnown, More-Info: Mozilla/5.0'),
+ (161,'0:0:0:0:0:0:0:1','Wed Nov 25 22:11:49 IST 2015','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-46.0.2490.86','Windows'),
+ (162,'169.254.34.77','Wed Nov 25 22:12:47 IST 2015','','Mozilla/5.0',1,'08-00-27-00-00-3E','UnKnown, More-Info: Mozilla/5.0','UnKnown, More-Info: Mozilla/5.0'),
+ (163,'169.254.34.77','Wed Nov 25 22:32:45 IST 2015','','Mozilla/5.0',1,'08-00-27-00-00-3E','UnKnown, More-Info: Mozilla/5.0','UnKnown, More-Info: Mozilla/5.0'),
+ (164,'169.254.34.77','Wed Nov 25 22:33:09 IST 2015','','Mozilla/5.0',1,'08-00-27-00-00-3E','UnKnown, More-Info: Mozilla/5.0','UnKnown, More-Info: Mozilla/5.0'),
+ (165,'0:0:0:0:0:0:0:1','Sat Jan 02 10:27:47 IST 2016','Sat Jan 02 10:35:42 IST 2016','',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (166,'0:0:0:0:0:0:0:1','Mon Jan 04 18:56:58 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (167,'0:0:0:0:0:0:0:1','Mon Jan 04 20:16:40 IST 2016','Mon Jan 04 20:19:37 IST 2016','',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (168,'0:0:0:0:0:0:0:1','Mon Jan 04 20:19:41 IST 2016','Mon Jan 04 20:20:07 IST 2016','',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (169,'0:0:0:0:0:0:0:1','Mon Jan 04 20:20:12 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (170,'0:0:0:0:0:0:0:1','Wed Jan 06 09:57:39 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (171,'0:0:0:0:0:0:0:1','Wed Jan 06 16:01:02 IST 2016','Wed Jan 06 16:01:31 IST 2016','',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (172,'0:0:0:0:0:0:0:1','Thu Jan 07 11:26:14 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (173,'0:0:0:0:0:0:0:1','Thu Jan 07 16:59:55 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (174,'0:0:0:0:0:0:0:1','Fri Jan 08 16:33:45 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (175,'0:0:0:0:0:0:0:1','Mon Jan 11 19:07:39 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (176,'0:0:0:0:0:0:0:1','Tue Jan 12 13:30:14 IST 2016','Tue Jan 12 13:30:23 IST 2016','',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (177,'0:0:0:0:0:0:0:1','Tue Jan 12 13:30:49 IST 2016','Tue Jan 12 13:30:55 IST 2016','',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (178,'0:0:0:0:0:0:0:1','Wed Jan 13 21:39:32 IST 2016','Wed Jan 13 21:40:25 IST 2016','',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (179,'0:0:0:0:0:0:0:1','Wed Jan 13 21:40:32 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',3,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (180,'0:0:0:0:0:0:0:1','Thu Jan 14 11:34:35 IST 2016','Thu Jan 14 11:35:38 IST 2016','',3,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (181,'0:0:0:0:0:0:0:1','Thu Jan 14 11:35:43 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (182,'0:0:0:0:0:0:0:1','Thu Jan 14 11:37:36 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (183,'127.0.0.1','Thu Jan 14 11:41:41 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0',1,'08-00-27-00-00-3E','Firefox-43.0','Windows'),
+ (184,'127.0.0.1','Thu Jan 14 11:48:19 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0',1,'08-00-27-00-00-3E','Firefox-43.0','Windows'),
+ (185,'0:0:0:0:0:0:0:1','Thu Jan 14 11:48:26 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (186,'0:0:0:0:0:0:0:1','Thu Jan 14 21:50:42 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (187,'0:0:0:0:0:0:0:1','Thu Jan 14 21:55:08 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (188,'0:0:0:0:0:0:0:1','Thu Jan 14 22:09:38 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (189,'0:0:0:0:0:0:0:1','Thu Jan 14 22:14:21 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (190,'0:0:0:0:0:0:0:1','Fri Jan 15 10:35:25 IST 2016','Fri Jan 15 10:35:45 IST 2016','',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (191,'0:0:0:0:0:0:0:1','Fri Jan 15 10:36:14 IST 2016','Fri Jan 15 10:36:18 IST 2016','',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (192,'0:0:0:0:0:0:0:1','Fri Jan 15 10:44:01 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.106','Windows'),
+ (193,'0:0:0:0:0:0:0:1','Fri Jan 15 21:01:17 IST 2016','','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',10,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (194,'0:0:0:0:0:0:0:1','Wed Jan 20 09:27:57 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (195,'0:0:0:0:0:0:0:1','Wed Jan 20 09:31:33 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (196,'0:0:0:0:0:0:0:1','Wed Jan 20 09:32:58 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (197,'0:0:0:0:0:0:0:1','Wed Jan 20 09:42:46 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',3,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (198,'0:0:0:0:0:0:0:1','Fri Jan 22 21:07:30 IST 2016','Fri Jan 22 21:25:10 IST 2016','',4,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (199,'0:0:0:0:0:0:0:1','Fri Jan 22 21:25:17 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',3,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (200,'0:0:0:0:0:0:0:1','Wed Jan 27 10:02:37 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',3,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (201,'0:0:0:0:0:0:0:1','Wed Jan 27 10:27:32 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',1,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (202,'0:0:0:0:0:0:0:1','Wed Jan 27 13:51:09 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (203,'0:0:0:0:0:0:0:1','Wed Jan 27 13:53:17 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (204,'0:0:0:0:0:0:0:1','Wed Jan 27 14:02:28 IST 2016','Wed Jan 27 14:02:45 IST 2016','',15,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (205,'0:0:0:0:0:0:0:1','Wed Jan 27 14:02:52 IST 2016','Wed Jan 27 14:02:55 IST 2016','',15,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (206,'0:0:0:0:0:0:0:1','Wed Jan 27 14:08:04 IST 2016','Wed Jan 27 14:08:16 IST 2016','',17,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows'),
+ (207,'0:0:0:0:0:0:0:1','Wed Jan 27 14:08:23 IST 2016','','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',4,'08-00-27-00-00-3E','Chrome-47.0.2526.111','Windows');
+/*!40000 ALTER TABLE `user_login_details` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user_page`
+--
+
+DROP TABLE IF EXISTS `user_page`;
+CREATE TABLE `user_page` (
+  `iduser_Page` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(200) DEFAULT NULL,
+  `page_name` varchar(200) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`iduser_Page`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_page`
+--
+
+/*!40000 ALTER TABLE `user_page` DISABLE KEYS */;
+INSERT INTO `user_page` (`iduser_Page`,`url`,`page_name`,`status`) VALUES 
+ (1,'Admin_Console.jsp','Admin Console',0),
+ (2,'Create_Admin_Account.jsp','Create New Account',1),
+ (3,'view_users.jsp','View All Users',1),
+ (4,'Add_User_Role.jsp','Manage User Role',1),
+ (5,'View_Login_History.jsp','View User Login History',1),
+ (6,'Super_Admin.jsp','Super Admin',1),
+ (7,'View_Jobs.jsp','View Jobs',1),
+ (8,'View_Login_History.jsp','View Login History ',1),
+ (9,'View_projects.jsp','View projects',1),
+ (10,'Admin_Profie.jsp','Admin Profie',1),
+ (11,'Deleted_Job.jsp','Deleted Job',1),
+ (12,'Deleted_Projects.jsp','Deleted Projects ',1),
+ (13,'Manage_Job.jsp','Manage Job',1),
+ (14,'Manage_Projects.jsp','Manage Projects',1),
+ (15,'view_users.jsp','View Users',1),
+ (16,'View_History.jsp','View History',1),
+ (17,'Other_Function.jsp','Other Function',1),
+ (18,'View_Admin.jsp','View Admin',1),
+ (19,'Order_view_Admin.jsp','Order view Admin',1),
+ (20,'View_profit.jsp','View profit',1);
+/*!40000 ALTER TABLE `user_page` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user_type`
+--
+
+DROP TABLE IF EXISTS `user_type`;
+CREATE TABLE `user_type` (
+  `idUser_type` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idUser_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_type`
+--
+
+/*!40000 ALTER TABLE `user_type` DISABLE KEYS */;
+INSERT INTO `user_type` (`idUser_type`,`role_name`,`status`) VALUES 
+ (1,'Admin',1),
+ (2,'User',1),
+ (3,'seller',1),
+ (4,'Buyer',1),
+ (5,'Super Admin',1),
+ (6,'ABC',0),
+ (7,'bhagya',0),
+ (8,'qwe',0),
+ (9,'ggggg',0),
+ (11,'A',0),
+ (12,'Owner',0),
+ (13,'You',0),
+ (14,'g',0),
+ (15,'naveen',0),
+ (16,'Umesh',0),
+ (17,'sss',0),
+ (18,'aaaaaaaaaaaa',0),
+ (19,'Tharindu',1),
+ (20,'Damith',1),
+ (21,'Niro',1);
+/*!40000 ALTER TABLE `user_type` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user_type_has_user_page`
+--
+
+DROP TABLE IF EXISTS `user_type_has_user_page`;
+CREATE TABLE `user_type_has_user_page` (
+  `idUser_type_has_user_page` int(11) NOT NULL AUTO_INCREMENT,
+  `User_type_idUser_type` int(11) NOT NULL,
+  `User_page_iduser_Page` int(11) NOT NULL,
+  PRIMARY KEY (`idUser_type_has_user_page`),
+  KEY `fk_User_type_has_user_page_User_type1` (`User_type_idUser_type`),
+  KEY `fk_User_type_has_user_page_User_page1` (`User_page_iduser_Page`),
+  CONSTRAINT `fk_User_type_has_user_page_User_page1` FOREIGN KEY (`User_page_iduser_Page`) REFERENCES `user_page` (`iduser_Page`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_User_type_has_user_page_User_type1` FOREIGN KEY (`User_type_idUser_type`) REFERENCES `user_type` (`idUser_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_type_has_user_page`
+--
+
+/*!40000 ALTER TABLE `user_type_has_user_page` DISABLE KEYS */;
+INSERT INTO `user_type_has_user_page` (`idUser_type_has_user_page`,`User_type_idUser_type`,`User_page_iduser_Page`) VALUES 
+ (59,1,1),
+ (60,5,1),
+ (61,5,4),
+ (62,5,2),
+ (63,5,3),
+ (64,5,5),
+ (65,5,6),
+ (66,5,7),
+ (67,5,8),
+ (68,5,9),
+ (69,5,10),
+ (70,5,11),
+ (71,5,12),
+ (72,5,13),
+ (73,5,14),
+ (75,1,10),
+ (76,5,15),
+ (78,13,3),
+ (79,5,16),
+ (80,5,17),
+ (81,5,18),
+ (82,5,19),
+ (83,5,20),
+ (84,14,1),
+ (85,14,3),
+ (87,15,2),
+ (88,15,3),
+ (90,16,17),
+ (91,16,19),
+ (92,17,1),
+ (93,18,1),
+ (94,18,5),
+ (95,19,3),
+ (96,19,5),
+ (97,19,7),
+ (99,20,3),
+ (100,20,5),
+ (102,20,1),
+ (103,21,1),
+ (104,21,3),
+ (105,21,5);
+/*!40000 ALTER TABLE `user_type_has_user_page` ENABLE KEYS */;
+
+
+--
+-- Definition of table `vacation`
+--
+
+DROP TABLE IF EXISTS `vacation`;
+CREATE TABLE `vacation` (
+  `idvacation` int(11) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `vacation_duration_idvacation_duration` int(11) NOT NULL,
+  `user_iduser` int(11) NOT NULL,
+  PRIMARY KEY (`idvacation`),
+  KEY `fk_vacation_vacation_duration1` (`vacation_duration_idvacation_duration`),
+  KEY `fk_vacation_user1` (`user_iduser`),
+  CONSTRAINT `fk_vacation_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vacation_vacation_duration1` FOREIGN KEY (`vacation_duration_idvacation_duration`) REFERENCES `vacation_duration` (`idvacation_duration`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vacation`
+--
+
+/*!40000 ALTER TABLE `vacation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vacation` ENABLE KEYS */;
+
+
+--
+-- Definition of table `vacation_duration`
+--
+
+DROP TABLE IF EXISTS `vacation_duration`;
+CREATE TABLE `vacation_duration` (
+  `idvacation_duration` int(11) NOT NULL AUTO_INCREMENT,
+  `duration` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`idvacation_duration`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vacation_duration`
+--
+
+/*!40000 ALTER TABLE `vacation_duration` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vacation_duration` ENABLE KEYS */;
+
+
+--
+-- Definition of table `view`
+--
+
+DROP TABLE IF EXISTS `view`;
+CREATE TABLE `view` (
+  `idview` int(11) NOT NULL AUTO_INCREMENT,
+  `view_type_idview_type` int(11) NOT NULL,
+  `user_iduser` int(11) NOT NULL,
+  `projects_idprojects` int(11) NOT NULL,
+  `pro_has_view_idpro_has_view` int(11) NOT NULL,
+  PRIMARY KEY (`idview`),
+  KEY `fk_view_view_type1` (`view_type_idview_type`),
+  KEY `fk_view_user1` (`user_iduser`),
+  KEY `fk_view_projects1` (`projects_idprojects`),
+  KEY `fk_view_pro_has_view1` (`pro_has_view_idpro_has_view`),
+  CONSTRAINT `fk_view_projects1` FOREIGN KEY (`projects_idprojects`) REFERENCES `projects` (`idprojects`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_view_pro_has_view1` FOREIGN KEY (`pro_has_view_idpro_has_view`) REFERENCES `pro_has_view` (`idpro_has_view`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_view_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_view_view_type1` FOREIGN KEY (`view_type_idview_type`) REFERENCES `view_type` (`idview_type`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `view`
+--
+
+/*!40000 ALTER TABLE `view` DISABLE KEYS */;
+/*!40000 ALTER TABLE `view` ENABLE KEYS */;
+
+
+--
+-- Definition of table `view_type`
+--
+
+DROP TABLE IF EXISTS `view_type`;
+CREATE TABLE `view_type` (
+  `idview_type` int(11) NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idview_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `view_type`
+--
+
+/*!40000 ALTER TABLE `view_type` DISABLE KEYS */;
+INSERT INTO `view_type` (`idview_type`,`type_name`) VALUES 
+ (1,'Project'),
+ (2,'SEO');
+/*!40000 ALTER TABLE `view_type` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

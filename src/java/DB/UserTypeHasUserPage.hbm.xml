@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.UserTypeHasUserPage" table="user_type_has_user_page" catalog="projectssale">
+        <id name="idUserTypeHasUserPage" type="java.lang.Integer">
+            <column name="idUser_type_has_user_page" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userType" class="DB.UserType" fetch="select">
+            <column name="User_type_idUser_type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userPage" class="DB.UserPage" fetch="select">
+            <column name="User_page_iduser_Page" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

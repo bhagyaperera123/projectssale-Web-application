@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="projectssale"/>
+  <table-filter match-name="message"/>
+  <table-filter match-name="order_details"/>
+  <table-filter match-name="msg_body_has_attachment"/>
+  <table-filter match-name="upload_file"/>
+  <table-filter match-name="pro_has_view"/>
+  <table-filter match-name="user_login_details"/>
+  <table-filter match-name="job_feedback"/>
+  <table-filter match-name="cart_has_project"/>
+  <table-filter match-name="payment"/>
+  <table-filter match-name="upload_pic"/>
+  <table-filter match-name="user_page"/>
+  <table-filter match-name="job_display_photo"/>
+  <table-filter match-name="upload_demo"/>
+  <table-filter match-name="user_type_has_user_page"/>
+  <table-filter match-name="user"/>
+  <table-filter match-name="job_category"/>
+  <table-filter match-name="user_login"/>
+  <table-filter match-name="cart"/>
+  <table-filter match-name="category_type"/>
+  <table-filter match-name="view_type"/>
+  <table-filter match-name="user_type"/>
+  <table-filter match-name="database1"/>
+  <table-filter match-name="category"/>
+  <table-filter match-name="vacation"/>
+  <table-filter match-name="projects"/>
+  <table-filter match-name="add_job"/>
+  <table-filter match-name="payment_has_projects"/>
+  <table-filter match-name="order"/>
+  <table-filter match-name="job_duration"/>
+  <table-filter match-name="vacation_duration"/>
+  <table-filter match-name="sub_category"/>
+  <table-filter match-name="job_price_list"/>
+  <table-filter match-name="view"/>
+  <table-filter match-name="message_body"/>
+</hibernate-reverse-engineering>

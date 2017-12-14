@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.JobFeedback" table="job_feedback" catalog="projectssale">
+        <id name="idJobFeedback" type="java.lang.Integer">
+            <column name="id_job_feedback" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <many-to-one name="addJob" class="DB.AddJob" fetch="select">
+            <column name="add_job_idadd_job" not-null="true" />
+        </many-to-one>
+        <property name="feedbackTitle" type="string">
+            <column name="feedback_title" length="10000" />
+        </property>
+        <property name="feedback" type="string">
+            <column name="feedback" length="10000" />
+        </property>
+        <property name="rating" type="java.lang.Integer">
+            <column name="rating" />
+        </property>
+        <property name="dateTime" type="string">
+            <column name="date_time" length="45" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+    </class>
+</hibernate-mapping>

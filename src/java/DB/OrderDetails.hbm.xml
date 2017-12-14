@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.OrderDetails" table="order_details" catalog="projectssale">
+        <id name="idorderDetails" type="java.lang.Integer">
+            <column name="idorder_details" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="title" length="400" />
+        </property>
+        <property name="msgBody" type="string">
+            <column name="msg_body" length="10000" />
+        </property>
+        <set name="orders" inverse="true">
+            <key>
+                <column name="idorder_details" not-null="true" />
+            </key>
+            <one-to-many class="DB.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

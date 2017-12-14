@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.Payment" table="payment" catalog="projectssale">
+        <id name="idPayment" type="java.lang.Integer">
+            <column name="idPayment" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <property name="projectCount" type="java.lang.Integer">
+            <column name="project_count" />
+        </property>
+        <property name="totalAmount" type="java.lang.Double">
+            <column name="Total_Amount" precision="22" scale="0" />
+        </property>
+        <property name="dateTime" type="string">
+            <column name="Date_Time" length="45" />
+        </property>
+        <property name="emailStatus" type="int">
+            <column name="email_Status" not-null="true" />
+        </property>
+        <set name="paymentHasProjectses" inverse="true">
+            <key>
+                <column name="Payment_idPayment" not-null="true" />
+            </key>
+            <one-to-many class="DB.PaymentHasProjects" />
+        </set>
+    </class>
+</hibernate-mapping>

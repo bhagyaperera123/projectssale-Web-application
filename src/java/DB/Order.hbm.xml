@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.Order" table="order" catalog="projectssale">
+        <id name="idorder" type="java.lang.Integer">
+            <column name="idorder" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userBySendOrderUser" class="DB.User" fetch="select">
+            <column name="send_order_user" not-null="true" />
+        </many-to-one>
+        <many-to-one name="orderDetails" class="DB.OrderDetails" fetch="select">
+            <column name="idorder_details" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByReceiverUser" class="DB.User" fetch="select">
+            <column name="receiver_user" not-null="true" />
+        </many-to-one>
+        <many-to-one name="addJob" class="DB.AddJob" fetch="select">
+            <column name="add_job_idadd_job" not-null="true" />
+        </many-to-one>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+    </class>
+</hibernate-mapping>

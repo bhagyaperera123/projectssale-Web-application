@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.Cart" table="cart" catalog="projectssale">
+        <id name="idcart" type="java.lang.Integer">
+            <column name="idcart" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <property name="productCount" type="java.lang.Integer">
+            <column name="product_count" />
+        </property>
+        <property name="totalAmount" type="java.lang.Double">
+            <column name="total_amount" precision="22" scale="0" />
+        </property>
+        <property name="dateTime" type="timestamp">
+            <column name="date_time" length="19" />
+        </property>
+        <set name="cartHasProjects" inverse="true">
+            <key>
+                <column name="cart_idcart" not-null="true" />
+            </key>
+            <one-to-many class="DB.CartHasProject" />
+        </set>
+    </class>
+</hibernate-mapping>

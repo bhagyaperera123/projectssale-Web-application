@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.CategoryType" table="category_type" catalog="projectssale">
+        <id name="idCategoryType" type="java.lang.Integer">
+            <column name="idCategory_type" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="Name" length="45" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="categories" inverse="true">
+            <key>
+                <column name="idCategory_type" not-null="true" />
+            </key>
+            <one-to-many class="DB.Category" />
+        </set>
+    </class>
+</hibernate-mapping>

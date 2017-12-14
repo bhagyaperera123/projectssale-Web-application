@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.AddJob" table="add_job" catalog="projectssale">
+        <id name="idaddJob" type="java.lang.Integer">
+            <column name="idadd_job" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="jobPriceList" class="DB.JobPriceList" fetch="select">
+            <column name="job_price_List_idjob_price_List" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jobDuration" class="DB.JobDuration" fetch="select">
+            <column name="job_duration_idjob_duration" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jobDisplayPhoto" class="DB.JobDisplayPhoto" fetch="select">
+            <column name="job_display_photo_id_job_display_photo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jobCategory" class="DB.JobCategory" fetch="select">
+            <column name="job_Category" not-null="true" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="title" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="10000" />
+        </property>
+        <property name="tags" type="string">
+            <column name="tags" length="10000" />
+        </property>
+        <property name="instructionsForBuyer" type="string">
+            <column name="instructions_for_buyer" length="10000" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="orders" inverse="true">
+            <key>
+                <column name="add_job_idadd_job" not-null="true" />
+            </key>
+            <one-to-many class="DB.Order" />
+        </set>
+        <set name="jobFeedbacks" inverse="true">
+            <key>
+                <column name="add_job_idadd_job" not-null="true" />
+            </key>
+            <one-to-many class="DB.JobFeedback" />
+        </set>
+    </class>
+</hibernate-mapping>

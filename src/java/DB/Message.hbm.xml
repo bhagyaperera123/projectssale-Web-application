@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.Message" table="message" catalog="projectssale">
+        <id name="idMessage" type="java.lang.Integer">
+            <column name="idMessage" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userByIduserTo" class="DB.User" fetch="select">
+            <column name="iduser_to" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByIduserForm" class="DB.User" fetch="select">
+            <column name="iduser_form" not-null="true" />
+        </many-to-one>
+        <set name="messageBodies" inverse="true">
+            <key>
+                <column name="Message_idMessage" not-null="true" />
+            </key>
+            <one-to-many class="DB.MessageBody" />
+        </set>
+    </class>
+</hibernate-mapping>

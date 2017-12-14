@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.Projects" table="projects" catalog="projectssale">
+        <id name="idprojects" type="java.lang.Integer">
+            <column name="idprojects" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="uploadFile" class="DB.UploadFile" fetch="select">
+            <column name="upload_file_idupload" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subCategory" class="DB.SubCategory" fetch="select">
+            <column name="Sub_Category_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="category" class="DB.Category" fetch="select">
+            <column name="Category_idCategory" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="DB.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <many-to-one name="uploadDemo" class="DB.UploadDemo" fetch="select">
+            <column name="Upload_demo_idUpload_demo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="uploadPic" class="DB.UploadPic" fetch="select">
+            <column name="upload_pic_idupload_pic" not-null="true" />
+        </many-to-one>
+        <many-to-one name="database1" class="DB.Database1" fetch="select">
+            <column name="Database_idDatabase" not-null="true" />
+        </many-to-one>
+        <property name="projectName" type="string">
+            <column name="Project_name" length="45" />
+        </property>
+        <property name="price" type="string">
+            <column name="Price" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="10000" />
+        </property>
+        <property name="proLan" type="string">
+            <column name="pro_lan" length="1000" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="cartHasProjects" inverse="true">
+            <key>
+                <column name="projects_idprojects" not-null="true" />
+            </key>
+            <one-to-many class="DB.CartHasProject" />
+        </set>
+        <set name="paymentHasProjectses" inverse="true">
+            <key>
+                <column name="projects_idprojects" not-null="true" />
+            </key>
+            <one-to-many class="DB.PaymentHasProjects" />
+        </set>
+        <set name="views" inverse="true">
+            <key>
+                <column name="projects_idprojects" not-null="true" />
+            </key>
+            <one-to-many class="DB.View" />
+        </set>
+    </class>
+</hibernate-mapping>

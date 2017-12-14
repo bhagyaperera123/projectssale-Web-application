@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.UploadFile" table="upload_file" catalog="projectssale">
+        <id name="idupload" type="java.lang.Integer">
+            <column name="idupload" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="4500" />
+        </property>
+        <property name="path" type="string">
+            <column name="path" length="1000" />
+        </property>
+        <set name="projectses" inverse="true">
+            <key>
+                <column name="upload_file_idupload" not-null="true" />
+            </key>
+            <one-to-many class="DB.Projects" />
+        </set>
+    </class>
+</hibernate-mapping>

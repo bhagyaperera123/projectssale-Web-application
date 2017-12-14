@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 3, 2015 12:28:21 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DB.JobDisplayPhoto" table="job_display_photo" catalog="projectssale">
+        <id name="idJobDisplayPhoto" type="java.lang.Integer">
+            <column name="id_job_display_photo" />
+            <generator class="identity" />
+        </id>
+        <property name="path" type="string">
+            <column name="path" length="10000" />
+        </property>
+        <set name="addJobs" inverse="true">
+            <key>
+                <column name="job_display_photo_id_job_display_photo" not-null="true" />
+            </key>
+            <one-to-many class="DB.AddJob" />
+        </set>
+    </class>
+</hibernate-mapping>
